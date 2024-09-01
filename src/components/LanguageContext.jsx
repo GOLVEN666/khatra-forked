@@ -1,19 +1,24 @@
-import React, { createContext, useState, useEffect } from 'react';
 
-export const LanguageContext = createContext();
+import React, { createContext, useState, useContext, useEffect } from 'react';
+
+const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState(() => {
-    return sessionStorage.getItem('language') || 'ar';
-  });
+  const [language, setLanguage] = useState('en');
+
+  const toggleLanguage = () => {
+    setLanguage(prevLang => (prevLang === 'en' ? 'ar' : 'en'));
+  };
 
   useEffect(() => {
-    sessionStorage.setItem('language', language);
+    document.body.dir = language === 'ar' ? 'rtl' : 'ltr';
   }, [language]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
+    <LanguageContext.Provider value={{ language, toggleLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
 };
+
+export const useLanguage = () => useContext(LanguageContext);

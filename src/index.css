@@ -5,6 +5,32 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body {
+  direction: ltr;
+}
+
+body[dir="rtl"] {
+  direction: rtl;
+}
+
+/* Custom placeholder styles for inputs */
+input::placeholder,
+textarea::placeholder {
+  color: #888; /* Adjust this color to be visible */
+  opacity: 1; /* Ensure full opacity */
+  font-family: 'Montserrat', sans-serif; /* Match the font with your inputs */
+  font-size: 1rem; /* Adjust size as needed */
+}
+
+/* For RTL */
+input[dir="rtl"]::placeholder,
+textarea[dir="rtl"]::placeholder {
+  text-align: right; /* Ensure alignment in RTL */
+}
+
+
+
 * {
   margin: 0;
   padding: 0;

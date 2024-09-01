@@ -1,4 +1,9 @@
+import React from 'react';
+import { useLanguage } from './LanguageContext';
+
 const CoffeeCard = ({ imgURL, changeBigShoeImage, bigShoeImg }) => {
+  const { language } = useLanguage();
+
   const handleClick = () => {
     if (bigShoeImg !== imgURL.bigShoe) {
       changeBigShoeImage(imgURL.bigShoe);
@@ -17,7 +22,7 @@ const CoffeeCard = ({ imgURL, changeBigShoeImage, bigShoeImg }) => {
       <div className='flex justify-center items-center bg-card bg-center bg-cover sm:w-40 sm:h-40 rounded-xl max-sm:p-4'>
         <img
           src={imgURL.thumbnail}
-          alt='Coffee grains'
+          alt={language === 'en' ? 'Coffee grains' : 'حبوب القهوة'}
           width={127}
           height={103.34}
           className='object-contain rounded'

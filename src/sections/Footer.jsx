@@ -1,8 +1,14 @@
+import React from 'react';
+import { useLanguage } from '../components/LanguageContext';
+import { translations } from '../constants/translations';
 import { copyrightSign } from "../assets/icons";
 import { footerLogo } from "../../public/images";
 import { footerLinks, socialMedia } from "../constants";
 
 const Footer = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <footer className='max-container'>
       <div className='flex justify-between items-start gap-20 flex-wrap max-lg:flex-col'>
@@ -17,8 +23,7 @@ const Footer = () => {
             />
           </a>
           <p className='mt-6 text-base leading-7 font-montserrat text-white-400 sm:max-w-sm'>
-          Découvrez nos dernières nouveautés café, alliant saveurs authentiques et qualité inégalée.
-
+            {t.footerDesc}
           </p>
           <div className='flex items-center gap-5 mt-8'>
             {socialMedia.map((icon) => (
@@ -62,9 +67,9 @@ const Footer = () => {
             height={20}
             className='rounded-full m-0'
           />
-          <p>Khatra. Tous droits réservés</p>
+          <p>{t.footerRights}</p>
         </div>
-        <p className='font-montserrat cursor-pointer'>Terms & Conditions</p>
+        <p className='font-montserrat cursor-pointer'>{t.footerTerms}</p>
       </div>
     </footer>
   );

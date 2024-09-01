@@ -1,16 +1,20 @@
 import { products } from "../constants";
 import { PopularProductCard } from "../components";
+import { useLanguage } from '../components/LanguageContext';
+import { translations } from '../constants/translations';
 
 const PopularProducts = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id='products' className='max-container max-sm:mt-12'>
       <div className='flex flex-col justify-start gap-5'>
         <h2 className='text-4xl font-playfair font-bold'>
-          Nos <span className='text-amber-900'> produits </span> Populaires
+          {t.popularProductsTitle1} <span className='text-amber-900'> {t.popularProductsTitle2} </span>
         </h2>
         <p className='lg:max-w-lg mt-2 font-montserrat text-slate-gray'>
-        Découvrez l’excellence et le style inégalés avec nos sélections de café renommées.
-         Plongez dans un monde de confort, de design et de valeur avec Khatra .
+          {t.popularProductsDesc}
         </p>
       </div>
 

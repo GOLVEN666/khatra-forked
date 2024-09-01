@@ -1,10 +1,15 @@
 import React from 'react';
+import { useLanguage } from './LanguageContext';
+import { translations } from '../constants/translations';
 
 const Products = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <div>
-      <h1>Nos Produits</h1>
-      <p>Ici, vous trouverez une variété de nos produits.</p>
+      <h1>{t.ourProducts}</h1>
+      <p>{t.productVariety}</p>
     </div>
   );
 };

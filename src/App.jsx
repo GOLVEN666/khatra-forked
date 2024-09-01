@@ -51,6 +51,7 @@ const Home = () => (
 
 const App = () => {
   return (
+    <LanguageProvider>
       <Router>
         <ScrollToTop /> 
         <Navbar />
@@ -65,6 +66,7 @@ const App = () => {
           <Footer />
         </section>
       </Router>
+    </LanguageProvider>
   );
 };
 

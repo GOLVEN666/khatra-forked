@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { star } from '../assets/icons';
+import { useLanguage } from './LanguageContext';
+import { translations } from '../constants/translations';
 
 const PopularProductCard = ({ imgURL, rating, name }) => {
-  // Function to render stars based on the rating
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const renderStars = () => {
     const starsArray = [];
     for (let i = 0; i < 5; i++) {
@@ -25,7 +28,7 @@ const PopularProductCard = ({ imgURL, rating, name }) => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="card w-64 shadow-xl bg-[#F3E5D5] border  mx-auto">
+      <div className="card w-64 shadow-xl bg-[#F3E5D5] border mx-auto">
         <figure>
           <img src={imgURL} alt={name} className="w-full h-full object-cover" />
         </figure>
@@ -37,7 +40,7 @@ const PopularProductCard = ({ imgURL, rating, name }) => {
           
           <div className="card-actions flex justify-center">
             <button className="btn bg-[#6F4E37] text-white hover:bg-[#3C2F2F] py-2 px-8 rounded-md focus:outline-none focus:ring-4 focus:ring-[#A56D3C]">
-              <Link to='/products'>Achetez maintenant</Link>
+              <Link to='/products'>{t.buyNow}</Link>
             </button>
           </div>
         </div>
